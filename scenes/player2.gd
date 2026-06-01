@@ -64,9 +64,9 @@ func _physics_process(delta):
 	
 	# animacoes
 # animacoes
-	if animation.animation == "p2_swing" and animation.is_playing():
+	if animation.animation == "swing" and animation.is_playing():
 		pass  # deixa p2_swing terminar
-	elif animation.animation == "p2_jump" and animation.is_playing():
+	elif animation.animation == "jump" and animation.is_playing():
 		pass  # deixa p2_jump terminar
 	elif not is_on_floor():
 		pass  # no ar, não troca animacao
@@ -81,9 +81,8 @@ func _physics_process(delta):
 	move_and_slide()
 
 func _on_animation_finished():
-	if animation.animation == "p2_swing":
+	if animation.animation == "swing":
 		hitbox.disabled = true
-
 
 func _on_hit_box_body_entered(body):
 	if body == self:
@@ -91,6 +90,7 @@ func _on_hit_box_body_entered(body):
 	
 	if body.name == "Ball":
 		var direction_x = -1 if animation.flip_h else 1
+		await get_tree().create_timer(0.2).timeout
 		body.apply_impulse(Vector2(direction_x * p2_swing_impact, -200))
 		body.hit_effect()
 		

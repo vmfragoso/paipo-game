@@ -105,6 +105,7 @@ sources/2 = SubResource("TileSetAtlasSource_jyhfs")
 [node name="Main" type="Node2D" unique_id=719489837]
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="." unique_id=33191401]
+follow_viewport_scale = 0.5
 
 [node name="sky" type="ParallaxLayer" parent="ParallaxBackground" unique_id=1869558327]
 motion_scale = Vector2(0, 0)

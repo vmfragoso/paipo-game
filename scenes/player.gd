@@ -90,6 +90,7 @@ func _on_hit_box_body_entered(body):
 	
 	if body.name == "Ball":
 		var direction_x = -1 if animation.flip_h else 1
+		await get_tree().create_timer(0.2).timeout
 		body.apply_impulse(Vector2(direction_x * swing_impact, -200))
 		body.hit_effect()
 		
