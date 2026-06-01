@@ -8,6 +8,7 @@ const GRAVITY = 800
 ##PRIVATE VARIABLES
 var matrix_ativo := false
 var jump_cutoff_value : float = 0.4
+var swing_impact : int = 300
 
 ## ON READY NOTATION VAR
 @onready var animation = $AnimatedSprite2D
@@ -48,7 +49,13 @@ func _physics_process(delta):
 
 	# movimento horizontal
 	var direction = Input.get_axis("left-move", "right-move")
-	velocity.x = direction * SPEED
+	
+	if Input.is_action_pressed("run") and direction != 0:
+		velocity.x = direction * SPEED * 2
+	else:
+		velocity.x = direction * SPEED
+	
+		
 	
 	# flip do sprite
 	if direction != 0:
@@ -56,10 +63,15 @@ func _physics_process(delta):
 		hitbox.position.x = abs(hitbox.position.x) * direction
 	
 	# animacoes
+# animacoes
 	if animation.animation == "swing" and animation.is_playing():
-		pass
+		pass  # deixa swing terminar
 	elif animation.animation == "jump" and animation.is_playing():
-		pass
+		pass  # deixa jump terminar
+	elif not is_on_floor():
+		pass  # no ar, não troca animacao
+	elif Input.is_action_pressed("run") and direction != 0:
+		animation.play("run")
 	elif direction != 0:
 		animation.play("walk")
 	else:
@@ -79,7 +91,7 @@ func _on_hit_box_body_entered(body):
 	
 	if body.name == "Ball":
 		var direction_x = -1 if animation.flip_h else 1
-		body.apply_impulse(Vector2(direction_x * 200, -200))
+		body.apply_impulse(Vector2(direction_x * swing_impact, -200))
 		body.hit_effect()
 		
 		#Attempt to add an slight screenshake at the impact
