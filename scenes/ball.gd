@@ -2,9 +2,6 @@ extends RigidBody2D
 
 @onready var particles = $hitParticles
 
-
-
-
 func hit_effect(matrix_ativo: bool):
 	print("BOLA APANHOU E FICOU BRANCA")
 	particles.emitting = true
