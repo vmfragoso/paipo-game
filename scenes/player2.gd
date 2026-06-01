@@ -38,7 +38,7 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("p2_jump") and not is_on_floor():
 		print("velocity .y  PULO DUPLO=",velocity.y)
 		velocity .y = p2_jump_FORCE
-		animation.play("p2_jump")
+		animation.play("jump")
 		
 		
 	# p2_swing

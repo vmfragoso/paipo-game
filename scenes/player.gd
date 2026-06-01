@@ -13,7 +13,6 @@ var swing_impact : int = 300
 ## ON READY NOTATION VAR
 @onready var animation = $AnimatedSprite2D
 @onready var hitbox = $Hitbox/CollisionShape2D
-@onready var camera = $Camera2D
 
 func _ready():
 	$Hitbox.body_entered.connect(_on_hit_box_body_entered)
