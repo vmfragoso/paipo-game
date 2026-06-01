@@ -4,12 +4,13 @@ extends CharacterBody2D
 const SPEED = 130.0
 const p2_jump_FORCE = -400
 const GRAVITY = 800
+const MATRIX_HOLD = 1.5
 
 ##PRIVATE VARIABLES
 var matrix_ativo := false
 var p2_jump_cutoff_value : float = 0.4
 var p2_swing_impact : int = 300
-
+var swing_hold_time := 0.0
 ## ON READY NOTATION VAR
 @onready var animation = $AnimatedSprite2D
 @onready var hitbox = $Hitbox/CollisionShape2D
@@ -43,10 +44,21 @@ func _physics_process(delta):
 		
 	# p2_swing
 	if Input.is_action_just_pressed("p2_swing"):
+		swing_hold_time = 0.0
+		
+	if Input.is_action_pressed("p2_swing"):
+		swing_hold_time += delta
+		print("swing_hold_time: ", swing_hold_time, "s")
+		animation.play("walk")
+		
+	if Input.is_action_just_released("p2_swing"):
+		if swing_hold_time >= MATRIX_HOLD:
+			matrix_ativo = true
+		else:
+			matrix_ativo = false
+		
 		hitbox.disabled = false
 		animation.play("swing")
-		
-
 	# movimento horizontal
 	var direction = Input.get_axis("p2_left", "p2_right")
 	
@@ -92,7 +104,7 @@ func _on_hit_box_body_entered(body):
 		var direction_x = -1 if animation.flip_h else 1
 		await get_tree().create_timer(0.2).timeout
 		body.apply_impulse(Vector2(direction_x * p2_swing_impact, -200))
-		body.hit_effect()
+		body.hit_effect(matrix_ativo)
 		
 		#Attempt to add an slight screenshake at the impact
 		Utils.shake(2.0)

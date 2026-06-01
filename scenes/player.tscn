@@ -177,8 +177,7 @@ shape = SubResource("RectangleShape2D_qlg0r")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2019497862]
 sprite_frames = SubResource("SpriteFrames_a8ls1")
-animation = &"run"
-frame_progress = 0.19760995
+animation = &"swing"
 
 [node name="Hitbox" type="Area2D" parent="." unique_id=632726123]
 
