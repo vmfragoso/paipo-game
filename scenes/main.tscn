@@ -1,0 +1,148 @@
+[gd_scene format=4 uid="uid://cib7xli5wwguo"]
+
+[ext_resource type="Texture2D" uid="uid://dxfi5eolbk3q6" path="res://assets/sprites/background/bleacher480x16.png" id="1_jyhfs"]
+[ext_resource type="PackedScene" uid="uid://cacbwua6bwsh" path="res://scenes/player.tscn" id="1_o5qli"]
+[ext_resource type="Texture2D" uid="uid://c7hutn4atcgf6" path="res://assets/sprites/background/building480x48.png" id="1_tbgi4"]
+[ext_resource type="Texture2D" uid="uid://cs4qiqudolpy" path="res://assets/sprites/background/cloud480x32.png" id="1_tefeu"]
+[ext_resource type="PackedScene" uid="uid://cphn1buvfnn6t" path="res://scenes/ball.tscn" id="2_0wfyh"]
+[ext_resource type="Texture2D" uid="uid://bid5lyuu23gxn" path="res://assets/sprites/tiles/grasstile16x48.png" id="3_sugp2"]
+
+[sub_resource type="Gradient" id="Gradient_sugp2"]
+offsets = PackedFloat32Array(0, 0.98395723)
+colors = PackedColorArray(0.69411767, 0.24313726, 0.3254902, 1, 0.9372549, 0.49019608, 0.34117648, 0.7411765)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_jyhfs"]
+gradient = SubResource("Gradient_sugp2")
+width = 480
+height = 270
+fill_from = Vector2(0, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tefeu"]
+atlas = ExtResource("1_jyhfs")
+region = Rect2(0, 0, 480, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o6xl0"]
+atlas = ExtResource("1_jyhfs")
+region = Rect2(480, 0, 480, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tipki"]
+atlas = ExtResource("1_jyhfs")
+region = Rect2(960, 0, 480, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_85g3d"]
+atlas = ExtResource("1_jyhfs")
+region = Rect2(1440, 0, 480, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_choun"]
+atlas = ExtResource("1_jyhfs")
+region = Rect2(1920, 0, 480, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ya4ey"]
+atlas = ExtResource("1_jyhfs")
+region = Rect2(2400, 0, 480, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eb6dy"]
+atlas = ExtResource("1_jyhfs")
+region = Rect2(2880, 0, 480, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_trceg"]
+atlas = ExtResource("1_jyhfs")
+region = Rect2(3360, 0, 480, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a8y0u"]
+atlas = ExtResource("1_jyhfs")
+region = Rect2(3840, 0, 480, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jkv2x"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tefeu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o6xl0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tipki")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_85g3d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_choun")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ya4ey")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eb6dy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_trceg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a8y0u")
+}],
+"loop": true,
+"name": &"default",
+"speed": 16.0
+}]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jyhfs"]
+texture = ExtResource("3_sugp2")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:1/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_tbgi4"]
+physics_layer_0/collision_layer = 1
+terrain_set_0/mode = 0
+terrain_set_0/terrain_0/name = "Terrain 0"
+terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
+sources/2 = SubResource("TileSetAtlasSource_jyhfs")
+
+[node name="Main" type="Node2D" unique_id=719489837]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="." unique_id=33191401]
+
+[node name="sky" type="ParallaxLayer" parent="ParallaxBackground" unique_id=1869558327]
+motion_scale = Vector2(0, 0)
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxBackground/sky" unique_id=1468278828]
+offset_right = 480.0
+offset_bottom = 270.0
+texture = SubResource("GradientTexture2D_jyhfs")
+
+[node name="cloud" type="ParallaxLayer" parent="ParallaxBackground" unique_id=455519834]
+motion_scale = Vector2(0.3, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/cloud" unique_id=2147431098]
+position = Vector2(242, 142)
+texture = ExtResource("1_tefeu")
+
+[node name="buildings" type="ParallaxLayer" parent="ParallaxBackground" unique_id=1817347688]
+motion_scale = Vector2(0.5, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/buildings" unique_id=1796926957]
+position = Vector2(241.49998, 183)
+scale = Vector2(1.01875, 1.3499999)
+texture = ExtResource("1_tbgi4")
+
+[node name="bleacher" type="ParallaxLayer" parent="ParallaxBackground" unique_id=1251581582]
+motion_scale = Vector2(0.7, 1)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ParallaxBackground/bleacher" unique_id=1535835094]
+position = Vector2(241, 217)
+sprite_frames = SubResource("SpriteFrames_jkv2x")
+autoplay = "default"
+frame_progress = 0.08039604
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1173079507]
+tile_map_data = PackedByteArray("AAAAAA8AAgAAAAAAAAAAABAAAgAAAAEAAAABAA8AAgAAAAAAAAABABAAAgAAAAEAAAACAA8AAgAAAAAAAAACABAAAgAAAAEAAAADAA8AAgAAAAAAAAADABAAAgAAAAEAAAAEAA8AAgAAAAAAAAAEABAAAgAAAAEAAAAFAA8AAgAAAAAAAAAFABAAAgAAAAEAAAAGAA8AAgAAAAAAAAAGABAAAgAAAAEAAAAHAA8AAgAAAAAAAAAHABAAAgAAAAEAAAAIAA8AAgAAAAAAAAAIABAAAgAAAAEAAAAJAA8AAgAAAAAAAAAJABAAAgAAAAEAAAAKAA8AAgAAAAAAAAAKABAAAgAAAAEAAAALAA8AAgAAAAAAAAALABAAAgAAAAEAAAAMAA8AAgAAAAAAAAAMABAAAgAAAAEAAAANAA8AAgAAAAAAAAANABAAAgAAAAEAAAAOAA8AAgAAAAAAAAAOABAAAgAAAAEAAAAPAA8AAgAAAAAAAAAPABAAAgAAAAEAAAAQAA8AAgAAAAAAAAAQABAAAgAAAAEAAAARAA8AAgAAAAAAAAARABAAAgAAAAEAAAASAA8AAgAAAAAAAAASABAAAgAAAAEAAAATAA8AAgAAAAAAAAATABAAAgAAAAEAAAAUAA8AAgAAAAAAAAAUABAAAgAAAAEAAAAVAA8AAgAAAAAAAAAVABAAAgAAAAEAAAAWAA8AAgAAAAAAAAAWABAAAgAAAAEAAAAXAA8AAgAAAAAAAAAXABAAAgAAAAEAAAAYAA8AAgAAAAAAAAAYABAAAgAAAAEAAAAZAA8AAgAAAAAAAAAZABAAAgAAAAEAAAAaAA8AAgAAAAAAAAAaABAAAgAAAAEAAAAcAA8AAgAAAAAAAAAcABAAAgAAAAEAAAAdAA8AAgAAAAAAAAAdABAAAgAAAAEAAAAbAA8AAgAAAAAAAAAbABAAAgAAAAEAAAD//w8AAgAAAAAAAAD+/w8AAgAAAAAAAAD9/w8AAgAAAAAAAAD8/w8AAgAAAAAAAAD7/w8AAgAAAAAAAAD6/w8AAgAAAAAAAAD5/w8AAgAAAAAAAAD//xAAAgAAAAEAAAD+/xAAAgAAAAEAAAD9/xAAAgAAAAEAAAD8/xAAAgAAAAEAAAD7/xAAAgAAAAEAAAD6/xAAAgAAAAEAAAD5/xAAAgAAAAEAAAAeABAAAgAAAAEAAAAfABAAAgAAAAEAAAAgABAAAgAAAAEAAAAhABAAAgAAAAEAAAAiABAAAgAAAAEAAAAjABAAAgAAAAEAAAAkABAAAgAAAAEAAAAlABAAAgAAAAEAAAAmABAAAgAAAAEAAAAnABAAAgAAAAEAAAAeAA8AAgAAAAAAAAAfAA8AAgAAAAAAAAAgAA8AAgAAAAAAAAAhAA8AAgAAAAAAAAAiAA8AAgAAAAAAAAAiAA4AAgAAAAAAAAAjAA4AAgAAAAAAAAAkAA4AAgAAAAAAAAAlAA4AAgAAAAAAAAAjAA8AAgAAAAAAAAAkAA8AAgAAAAAAAAAlAA8AAgAAAAAAAAAmAA8AAgAAAAAAAAAnAA8AAgAAAAAAAAA=")
+tile_set = SubResource("TileSet_tbgi4")
+
+[node name="Player" parent="." unique_id=1990611813 instance=ExtResource("1_o5qli")]
+position = Vector2(203, 229)
+
+[node name="Ball" parent="." unique_id=1866096816 instance=ExtResource("2_0wfyh")]
+position = Vector2(228, 208)
