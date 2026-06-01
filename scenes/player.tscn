@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://ca8j7medm06d7" path="res://assets/sprites/paipo/paiposwing.png" id="3_tuyoq"]
 [ext_resource type="Texture2D" uid="uid://cmpejoqr6q00w" path="res://assets/sprites/paipo/paiporun.png" id="4_fjrip"]
 [ext_resource type="Texture2D" uid="uid://cwpqw38b1dvwx" path="res://assets/sprites/paipo/paipowalk2.png" id="5_fjrip"]
-[ext_resource type="Script" uid="uid://b6rowexa8yvsr" path="res://scenes/camera_2d.gd" id="6_tuyoq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qlg0r"]
 size = Vector2(5, 8)
@@ -187,8 +186,5 @@ frame_progress = 0.19760995
 position = Vector2(6.90625, -0.625)
 shape = SubResource("RectangleShape2D_tuyoq")
 disabled = true
-
-[node name="Camera2D" type="Camera2D" parent="." unique_id=554582711]
-script = ExtResource("6_tuyoq")
 
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

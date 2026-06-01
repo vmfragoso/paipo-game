@@ -54,3 +54,6 @@ lifetime = 0.6
 one_shot = true
 explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_4dx81")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1688719227]
+position_smoothing_enabled = true

@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cs4qiqudolpy" path="res://assets/sprites/background/cloud480x32.png" id="1_tefeu"]
 [ext_resource type="PackedScene" uid="uid://cphn1buvfnn6t" path="res://scenes/ball.tscn" id="2_0wfyh"]
 [ext_resource type="Texture2D" uid="uid://bid5lyuu23gxn" path="res://assets/sprites/tiles/grasstile16x48.png" id="3_sugp2"]
+[ext_resource type="Script" uid="uid://pedkhrbdehrg" path="res://scenes/player2.gd" id="6_o6xl0"]
 
 [sub_resource type="Gradient" id="Gradient_sugp2"]
 offsets = PackedFloat32Array(0, 0.98395723)
@@ -143,6 +144,10 @@ tile_set = SubResource("TileSet_tbgi4")
 
 [node name="Player" parent="." unique_id=1990611813 instance=ExtResource("1_o5qli")]
 position = Vector2(203, 229)
+
+[node name="Player2" parent="." unique_id=1331801120 instance=ExtResource("1_o5qli")]
+position = Vector2(319, 230)
+script = ExtResource("6_o6xl0")
 
 [node name="Ball" parent="." unique_id=1866096816 instance=ExtResource("2_0wfyh")]
 position = Vector2(228, 208)
