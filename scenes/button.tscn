@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://t3yfii3lle6e"]
 
 [ext_resource type="Texture2D" uid="uid://cp3tc7rbqjsdk" path="res://assets/sprites/other/bigbutton-Sheet.png" id="1_mi6dp"]
+[ext_resource type="Script" uid="uid://ctt1b515m2nin" path="res://scenes/button.gd" id="1_rhj8v"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rhj8v"]
 atlas = ExtResource("1_mi6dp")
@@ -28,14 +29,28 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1bdt2"]
-size = Vector2(16, 8)
+size = Vector2(16, 13)
 
-[node name="button" type="RigidBody2D" unique_id=819707588]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mi6dp"]
+size = Vector2(12, 6)
+
+[node name="button" type="StaticBody2D" unique_id=890227721]
+script = ExtResource("1_rhj8v")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=517062885]
 sprite_frames = SubResource("SpriteFrames_i7y4x")
 animation = &"pressed"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2039720858]
-position = Vector2(0, -5)
+position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_1bdt2")
+
+[node name="PressColisition" type="Area2D" parent="." unique_id=1885626243]
+position = Vector2(19, -7)
+
+[node name="RedButtonShape" type="CollisionShape2D" parent="PressColisition" unique_id=580856855]
+position = Vector2(-19, 4)
+shape = SubResource("RectangleShape2D_mi6dp")
+debug_color = Color(0.4694296, 0.5878538, 0.17481431, 0.41960785)
+
+[connection signal="body_entered" from="PressColisition" to="." method="_on_hit_box_body_entered"]

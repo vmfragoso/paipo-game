@@ -13,21 +13,18 @@ var matrix_ativo := false
 var jump_cutoff_value : float = 0.4
 var swing_impact := INITIAL_SWING_FORCE
 var swing_hold_time := 0.0
-var Maguila = preload("res://scenes/maguila.tscn")
-var maguila_ativo := false
 
 ## ON READY NOTATION VAR
 @onready var animation = $AnimatedSprite2D
 @onready var hitbox = $Hitbox/CollisionShape2D
-@onready var button = $button
 
 func _ready():
 	$Hitbox.body_entered.connect(_on_hit_box_body_entered)
 
-func action(name: String) -> String:
+func action(action_name: String) -> String:
 	if player_id == 1:
-		return name
-	return "p2_" + name
+		return action_name
+	return "p2_" + action_name
 
 func _physics_process(delta):
 	# gravidade
@@ -101,40 +98,26 @@ func _physics_process(delta):
 	
 	move_and_slide()
 
-#func _on_animation_finished():
-#	if animation.animation == "swing":
-#		hitbox.disabled = true
-
 func _process(delta):
 	if animation.animation == "swing":
 		hitbox.disabled = not (animation.frame >= 3 and animation.frame <= 4)
 	else:
-		hitbox.disabled = true
+		hitbox.disabled = false
 
 func _on_hit_box_body_entered(body):
+	var direction_x = -1 if animation.flip_h else 1
+	
 	if body == self:
 		return
 	
-	if body.name == "button":
-		if maguila_ativo:
-			return
-		print("Entrou no botao")
-		body.get_node("AnimatedSprite2D").play("pressed") 
-		var maguila = Maguila.instantiate()
-		get_tree().current_scene.add_child(maguila)
-		maguila.start(Vector2(400, 600),self)
-		#maguila.start(Vector2(body.global_position.x, -50))
-		print(body.global_position.x)
-		
-	
-	if body.name == "Ball":
-		var direction_x = -1 if animation.flip_h else 1
-		#await get_tree().create_timer(0.2).timeout
+	if (body.name == "Ball" or body.name.contains("Player")) and animation.animation == "swing":
+		print(body.name, " ", animation.animation)
 		print(direction_x * swing_impact)
 		body.apply_impulse(Vector2(direction_x * swing_impact, body.position.y*-1))
 		body.hit_effect(matrix_ativo)
 		
-		#Attempt to add an slight screenshake at the impact
-		#Utils.shake(2.0)
+	if body.name.contains("button"):
+		body._on_hit_box_body_entered(self, matrix_ativo)
 		
-		hitbox.set_deferred("disabled", true)
+	if body.name.contains("Player"):
+		body.apply_impulse(Vector2(direction_x * 1, body.position.y*-1))
