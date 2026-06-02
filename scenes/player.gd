@@ -9,11 +9,14 @@ const GRAVITY = 800
 var matrix_ativo := false
 var jump_cutoff_value : float = 0.4
 var swing_impact : int = 300
+var Maguila = preload("res://scenes/maguila.tscn")
+var maguila_ativo := false
 
 ## ON READY NOTATION VAR
 @onready var animation = $AnimatedSprite2D
 @onready var hitbox = $Hitbox/CollisionShape2D
 @onready var camera = $Camera2D
+@onready var button = $button
 
 func _ready():
 	$Hitbox.body_entered.connect(_on_hit_box_body_entered)
@@ -88,6 +91,18 @@ func _on_animation_finished():
 func _on_hit_box_body_entered(body):
 	if body == self:
 		return
+	
+	if body.name == "button":
+		if maguila_ativo:
+			return
+		print("Entrou no botao")
+		body.get_node("AnimatedSprite2D").play("pressed") 
+		var maguila = Maguila.instantiate()
+		get_tree().current_scene.add_child(maguila)
+		maguila.start(Vector2(400, 600),self)
+		#maguila.start(Vector2(body.global_position.x, -50))
+		print(body.global_position.x)
+		
 	
 	if body.name == "Ball":
 		var direction_x = -1 if animation.flip_h else 1

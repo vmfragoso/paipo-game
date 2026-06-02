@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://ilkk00hngdsa"]
+
+[ext_resource type="Script" uid="uid://dfwphnnstck3v" path="res://scenes/maguila.gd" id="1_33e0u"]
+[ext_resource type="Texture2D" uid="uid://owxavs0xlrnf" path="res://assets/sprites/other/maguila_noBG.png" id="2_4lhim"]
+[ext_resource type="AudioStream" uid="uid://xad6rvgnmx7q" path="res://assets/audio/sfx/deiumsoconapreguica.ogg" id="3_4lhim"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_33e0u"]
+size = Vector2(56.25, 55.875)
+
+[node name="maguila" type="RigidBody2D" unique_id=103142292]
+gravity_scale = 0.0
+script = ExtResource("1_33e0u")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=334642570]
+shape = SubResource("RectangleShape2D_33e0u")
+disabled = true
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=842215291]
+scale = Vector2(0.12119677, 0.12119678)
+texture = ExtResource("2_4lhim")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=761537228]
+stream = ExtResource("3_4lhim")
