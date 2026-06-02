@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://4wp5k5f5j0tu"
+path="res://.godot/imported/MAGUILA - Vida de Campeão - (SOCO NA PREGUIÇA) - Niel xD (youtube).mp3-859ed5104c04bd0c78568769ba797882.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/sfx/MAGUILA - Vida de Campeão - (SOCO NA PREGUIÇA) - Niel xD (youtube).mp3"
+dest_files=["res://.godot/imported/MAGUILA - Vida de Campeão - (SOCO NA PREGUIÇA) - Niel xD (youtube).mp3-859ed5104c04bd0c78568769ba797882.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

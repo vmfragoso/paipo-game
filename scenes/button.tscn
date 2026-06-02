@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://t3yfii3lle6e"]
+
+[ext_resource type="Texture2D" uid="uid://cp3tc7rbqjsdk" path="res://assets/sprites/other/bigbutton-Sheet.png" id="1_mi6dp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rhj8v"]
+atlas = ExtResource("1_mi6dp")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3q610"]
+atlas = ExtResource("1_mi6dp")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_i7y4x"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rhj8v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3q610")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rhj8v")
+}],
+"loop": false,
+"name": &"pressed",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1bdt2"]
+size = Vector2(16, 8)
+
+[node name="button" type="RigidBody2D" unique_id=819707588]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=517062885]
+sprite_frames = SubResource("SpriteFrames_i7y4x")
+animation = &"pressed"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2039720858]
+position = Vector2(0, -5)
+shape = SubResource("RectangleShape2D_1bdt2")
