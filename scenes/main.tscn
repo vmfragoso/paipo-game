@@ -94,6 +94,8 @@ texture = ExtResource("3_sugp2")
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, -8, 8, 8, 8, 8, -8)
+0:2/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_tbgi4"]
 physics_layer_0/collision_layer = 1
@@ -105,6 +107,7 @@ sources/2 = SubResource("TileSetAtlasSource_jyhfs")
 [node name="Main" type="Node2D" unique_id=719489837]
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="." unique_id=33191401]
+follow_viewport_scale = 0.5
 
 [node name="sky" type="ParallaxLayer" parent="ParallaxBackground" unique_id=1869558327]
 motion_scale = Vector2(0, 0)
@@ -144,6 +147,10 @@ tile_set = SubResource("TileSet_tbgi4")
 
 [node name="Player" parent="." unique_id=1990611813 instance=ExtResource("1_o5qli")]
 position = Vector2(203, 229)
+
+[node name="Player2" parent="." unique_id=1331801120 instance=ExtResource("1_o5qli")]
+position = Vector2(319, 230)
+player_id = 2
 
 [node name="Ball" parent="." unique_id=1866096816 instance=ExtResource("2_0wfyh")]
 position = Vector2(228, 208)

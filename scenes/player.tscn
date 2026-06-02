@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://ca8j7medm06d7" path="res://assets/sprites/paipo/paiposwing.png" id="3_tuyoq"]
 [ext_resource type="Texture2D" uid="uid://cmpejoqr6q00w" path="res://assets/sprites/paipo/paiporun.png" id="4_fjrip"]
 [ext_resource type="Texture2D" uid="uid://cwpqw38b1dvwx" path="res://assets/sprites/paipo/paipowalk2.png" id="5_fjrip"]
-[ext_resource type="Script" uid="uid://b6rowexa8yvsr" path="res://scenes/camera_2d.gd" id="6_tuyoq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qlg0r"]
 size = Vector2(5, 8)
@@ -166,7 +165,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tuyoq"]
-size = Vector2(6.1875, 6.25)
+size = Vector2(13.5, 1)
 
 [node name="Player" type="CharacterBody2D" unique_id=1331801120]
 scale = Vector2(2, 2)
@@ -177,18 +176,17 @@ position = Vector2(0.5, -1)
 shape = SubResource("RectangleShape2D_qlg0r")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2019497862]
+position = Vector2(-0.5, 0)
 sprite_frames = SubResource("SpriteFrames_a8ls1")
-animation = &"run"
-frame_progress = 0.19760995
+animation = &"swing"
+frame = 4
+frame_progress = 1.0
 
 [node name="Hitbox" type="Area2D" parent="." unique_id=632726123]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1752914925]
-position = Vector2(6.90625, -0.625)
+position = Vector2(0.25, -0.5)
 shape = SubResource("RectangleShape2D_tuyoq")
 disabled = true
-
-[node name="Camera2D" type="Camera2D" parent="." unique_id=554582711]
-script = ExtResource("6_tuyoq")
 
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
