@@ -27,6 +27,10 @@ window/size/window_width_override=1920
 window/size/window_height_override=1080
 window/stretch/mode="viewport"
 
+[gui]
+
+theme/custom_font="uid://dl8i53ifkwm80"
+
 [input]
 
 swing={
@@ -84,6 +88,7 @@ p2_run={
 [physics]
 
 3d/physics_engine="Jolt Physics"
+common/physics_interpolation=true
 
 [rendering]
 

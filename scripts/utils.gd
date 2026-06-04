@@ -1,5 +1,29 @@
 extends Node
 
+#CONST
+const SWEETIE_16 := {
+	"black":      Color("1a1c2c"),
+	"purple":     Color("5d275d"),
+	"red":        Color("b13e53"),
+	"orange":     Color("ef7d57"),
+	"yellow":     Color("ffcd75"),
+	"lime":       Color("a7f070"),
+	"green":      Color("38b764"),
+	"teal":       Color("257179"),
+	"navy":       Color("29366f"),
+	"blue":       Color("3b5dc9"),
+	"sky":        Color("41a6f6"),
+	"cyan":       Color("73eff7"),
+	"white":      Color("f4f4f4"),
+	"light_gray": Color("94b0c2"),
+	"gray":       Color("566c86"),
+	"dark_gray":  Color("333c57"),
+}
+
+#$Sprite2D.modulate = Util.SWEETIE_16.red
+#var c = Util.SWEETIE_16_LIST[4]   # amarelo
+#var d = Util.sweetie(20)          # faz wrap → índice 4
+
 ##PRIVATE VARIABLES
 
 #CAMERA VARS

@@ -2,9 +2,9 @@
 
 [ext_resource type="Texture2D" uid="uid://daiiernq0dxwg" path="res://assets/sprites/ball/ball_16x16.png" id="1_7s4qf"]
 [ext_resource type="Script" uid="uid://bm24j5afkpwjg" path="res://scenes/ball.gd" id="1_cxlvu"]
+[ext_resource type="Script" uid="uid://c48p8kntwlgnv" path="res://scenes/camera_ball2d.gd" id="3_f7cbr"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_7s4qf"]
-friction = 0.5
 bounce = 0.51
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cxlvu"]
@@ -57,3 +57,11 @@ process_material = SubResource("ParticleProcessMaterial_4dx81")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1688719227]
 position_smoothing_enabled = true
+script = ExtResource("3_f7cbr")
+
+[node name="Label" type="Label" parent="." unique_id=1061845431]
+offset_left = -12.0
+offset_top = -22.0
+offset_right = 12.0
+offset_bottom = -6.0
+text = "5"

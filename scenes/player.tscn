@@ -165,7 +165,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tuyoq"]
-size = Vector2(13.5, 1)
+size = Vector2(5.5, 6)
 
 [node name="Player" type="CharacterBody2D" unique_id=1331801120]
 scale = Vector2(2, 2)
@@ -185,7 +185,7 @@ frame_progress = 1.0
 [node name="Hitbox" type="Area2D" parent="." unique_id=632726123]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1752914925]
-position = Vector2(0.25, -0.5)
+position = Vector2(6, -1)
 shape = SubResource("RectangleShape2D_tuyoq")
 disabled = true
 

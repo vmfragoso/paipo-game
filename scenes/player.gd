@@ -15,6 +15,7 @@ var swing_impact := INITIAL_SWING_FORCE
 var swing_hold_time := 0.0
 var Maguila = preload("res://scenes/maguila.tscn")
 var maguila_ativo := false
+var damage = 0.0
 
 ## ON READY NOTATION VAR
 @onready var animation = $AnimatedSprite2D
@@ -56,11 +57,19 @@ func _physics_process(delta):
 		swing_impact = INITIAL_SWING_FORCE
 	if Input.is_action_pressed(action("swing")):
 		swing_hold_time += delta
-		swing_impact += 5
-		print("swing_hold_time: ", swing_hold_time, "s")
-		animation.play("walk")
+		if swing_hold_time >= 3.0:
+			swing_hold_time = 5
+			swing_impact = 900
+			print("PRESSED: ", swing_hold_time, "Impact =", swing_impact)
+			
+		else:
+			swing_impact += 5
+			print("HOLD: ", swing_hold_time,  "Impact =", swing_impact)
+			animation.play("walk")
+		damage= swing_impact
 		
 	if Input.is_action_just_released(action("swing")):
+		
 		if swing_hold_time >= MATRIX_HOLD:
 			matrix_ativo = true
 		else:
@@ -132,9 +141,8 @@ func _on_hit_box_body_entered(body):
 		#await get_tree().create_timer(0.2).timeout
 		print(direction_x * swing_impact)
 		body.apply_impulse(Vector2(direction_x * swing_impact, body.position.y*-1))
-		body.hit_effect(matrix_ativo)
-		
+		body.hit_effect(matrix_ativo,damage)
 		#Attempt to add an slight screenshake at the impact
-		#Utils.shake(2.0)
-		
+		Utils.shake(2.0)
 		hitbox.set_deferred("disabled", true)
+		
