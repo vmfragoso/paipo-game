@@ -3,31 +3,35 @@ extends RigidBody2D
 @onready var particles = $hitParticles
 @onready var label_damage = $Label
 
+
+#CONST
+const HP_MAX = 10
+
+
 #GLOBAL VARIABLES
 
 var impact_position : Vector2
 var tween_atual: Tween
 var wobble_atual: Tween
+var hp: int = HP_MAX 
+signal hp_changed(current_hp,max_hp)
 
 func _ready() -> void:
 	label_damage.modulate.a = 0.0  # Start invesiblah!
 	label_damage.top_level = true
 
-func hit_effect(matrix_ativo: bool, damage):
+func hit_effect(matrix_ativo: bool, hit_impact):
 	print("BOLA APANHOU E FICOU BRANCA")
-	
+	take_damage(hit_impact)
 	impact_position = self.global_position + Vector2(0,-16)
 	
-	wiggle_wiggle_wiggle(damage)
+	wiggle_wiggle_wiggle(hit_impact)
 	
 	particles.emitting = true
 	# white Super Brilliant pa caraleop colo.withe nao funciona acho que se eu aumentar melhora
 	$Sprite2D.modulate = Color(50, 50, 50, 1)  
 	await get_tree().create_timer(0.2).timeout
 	$Sprite2D.modulate = Color(1, 1, 1, 1)  # back to normal
-	
-	
-	
 	
 	#matrix effect
 	if matrix_ativo:
@@ -37,15 +41,30 @@ func hit_effect(matrix_ativo: bool, damage):
 		await get_tree().create_timer(0.05).timeout
 		Engine.time_scale = 1.0
 		
+		
+func take_damage (hit_impact):
+	if hp <= 0:
+		hp = 10
+	var damage = 1
+	if hit_impact >= 900:
+		damage = 2
+	hp = max(0, hp - damage)
 	
-func wiggle_wiggle_wiggle (damage):
+	print("BALL: vou emitir. Conexões = ", hp_changed.get_connections().size())
+	print("BALL: lista = ", hp_changed.get_connections())
+	hp_changed.emit(hp, HP_MAX)
+	print("BALL: emiti.")
+	
+	print("Bola tomou %d de dano. HP atual: %d/%d" % [damage, hp, HP_MAX])
+
+	
+func wiggle_wiggle_wiggle (hit_impact):
 	if tween_atual and tween_atual.is_valid():
 		tween_atual.kill()
-	if wobble_atual and wobble_atual.is_valid():
-		wobble_atual.kill()
+
 	
 	
-	label_damage.text = str(round(damage))
+	label_damage.text = str(round(hit_impact))
 	# Reseta posição e opacidade
 	label_damage.global_position = impact_position
 	label_damage.modulate.a = 1.0

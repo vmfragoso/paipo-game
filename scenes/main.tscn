@@ -1,5 +1,6 @@
 [gd_scene format=4 uid="uid://cib7xli5wwguo"]
 
+[ext_resource type="Script" uid="uid://o0nwy0qmq47q" path="res://scenes/main.gd" id="1_85g3d"]
 [ext_resource type="Texture2D" uid="uid://dxfi5eolbk3q6" path="res://assets/sprites/background/bleacher480x16.png" id="1_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://cacbwua6bwsh" path="res://scenes/player.tscn" id="1_o5qli"]
 [ext_resource type="Texture2D" uid="uid://c7hutn4atcgf6" path="res://assets/sprites/background/building480x48.png" id="1_tbgi4"]
@@ -7,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cphn1buvfnn6t" path="res://scenes/ball.tscn" id="2_0wfyh"]
 [ext_resource type="Texture2D" uid="uid://bid5lyuu23gxn" path="res://assets/sprites/tiles/grasstile16x48.png" id="3_sugp2"]
 [ext_resource type="PackedScene" uid="uid://t3yfii3lle6e" path="res://scenes/button.tscn" id="7_o6xl0"]
+[ext_resource type="PackedScene" uid="uid://b3n5rw57rpr80" path="res://scenes/hud.tscn" id="8_tipki"]
 
 [sub_resource type="Gradient" id="Gradient_sugp2"]
 offsets = PackedFloat32Array(0, 0.98395723)
@@ -105,6 +107,7 @@ terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
 sources/2 = SubResource("TileSetAtlasSource_jyhfs")
 
 [node name="Main" type="Node2D" unique_id=719489837]
+script = ExtResource("1_85g3d")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="." unique_id=33191401]
 follow_viewport_scale = 0.5
@@ -148,14 +151,11 @@ tile_set = SubResource("TileSet_tbgi4")
 [node name="Player" parent="." unique_id=1990611813 instance=ExtResource("1_o5qli")]
 position = Vector2(203, 229)
 
-[node name="Player2" parent="." unique_id=1331801120 instance=ExtResource("1_o5qli")]
-position = Vector2(319, 230)
-player_id = 2
-
 [node name="Ball" parent="." unique_id=1866096816 instance=ExtResource("2_0wfyh")]
 position = Vector2(270, 186)
-mass = 0.75
 
 [node name="button" parent="." unique_id=819707588 instance=ExtResource("7_o6xl0")]
 position = Vector2(477, 231)
 rotation = -1.5707964
+
+[node name="HUD" parent="." unique_id=1749562090 instance=ExtResource("8_tipki")]

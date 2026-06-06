@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://t3yfii3lle6e"]
 
 [ext_resource type="Texture2D" uid="uid://cp3tc7rbqjsdk" path="res://assets/sprites/other/bigbutton-Sheet.png" id="1_mi6dp"]
+[ext_resource type="Script" uid="uid://bmnv3q8rm07k8" path="res://scenes/button.gd" id="1_rhj8v"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rhj8v"]
 atlas = ExtResource("1_mi6dp")
@@ -31,6 +32,7 @@ animations = [{
 size = Vector2(16, 8)
 
 [node name="button" type="RigidBody2D" unique_id=819707588]
+script = ExtResource("1_rhj8v")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=517062885]
 sprite_frames = SubResource("SpriteFrames_i7y4x")
