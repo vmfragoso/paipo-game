@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://clpty45pcbk53"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o5ksm"]
+size = Vector2(0, 0)
+
+[node name="BallShattered" type="RigidBody2D" unique_id=647922246]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1446273966]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1560922461]
+shape = SubResource("RectangleShape2D_o5ksm")

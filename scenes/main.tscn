@@ -9,6 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://bid5lyuu23gxn" path="res://assets/sprites/tiles/grasstile16x48.png" id="3_sugp2"]
 [ext_resource type="PackedScene" uid="uid://t3yfii3lle6e" path="res://scenes/button.tscn" id="7_o6xl0"]
 [ext_resource type="PackedScene" uid="uid://b3n5rw57rpr80" path="res://scenes/hud.tscn" id="8_tipki"]
+[ext_resource type="PackedScene" uid="uid://clpty45pcbk53" path="res://scenes/ball_shattered.tscn" id="8_ya4ey"]
+[ext_resource type="Texture2D" uid="uid://5ca0aunhc155" path="res://assets/sprites/ball/ball_shattered16x16.png" id="9_eb6dy"]
 
 [sub_resource type="Gradient" id="Gradient_sugp2"]
 offsets = PackedFloat32Array(0, 0.98395723)
@@ -153,9 +155,12 @@ position = Vector2(203, 229)
 
 [node name="Ball" parent="." unique_id=1866096816 instance=ExtResource("2_0wfyh")]
 position = Vector2(270, 186)
+piece_scene = ExtResource("8_ya4ey")
+pieces_spritesheet = ExtResource("9_eb6dy")
 
 [node name="button" parent="." unique_id=819707588 instance=ExtResource("7_o6xl0")]
-position = Vector2(477, 231)
+position = Vector2(479, 173)
 rotation = -1.5707964
+freeze = true
 
 [node name="HUD" parent="." unique_id=1749562090 instance=ExtResource("8_tipki")]
